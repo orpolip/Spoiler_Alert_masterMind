@@ -1,31 +1,35 @@
 package com.spoiler_alert;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Display {
 
     public static void main(String[] args) {
 
-        final String ANSI_RESET = "\u001B[0m";
-        final String ANSI_RED = "\u001B[31m";
-        final String ANSI_GREEN = "\u001B[32m";
-        final String ANSI_YELLOW = "\u001B[33m";
-        final String ANSI_BLUE = "\u001B[34m";
-        final String ANSI_PURPLE = "\u001B[35m";
-        final String ANSI_CYAN = "\u001B[36m";
+        HashMap<Character, String> colorMap = new HashMap<>();
+        colorMap.put('r', "\u001B[0m"); //reset
+        colorMap.put('R', "\u001B[31m"); //red
+        colorMap.put('G', "\u001B[32m"); //green
+        colorMap.put('Y', "\u001B[33m"); //yellow
+        colorMap.put('B', "\u001B[34m"); //blue
+        colorMap.put('P', "\u001B[35m"); //purple
+        colorMap.put('C', "\u001B[36m"); //cyan
+
         final String PEG = "\u25CF";
 
         ArrayList<ArrayList<Character>> guesses = new ArrayList<>();
         for (int i = 0; i < 4 ; i++) {
-            guesses.add(pickrandom.get_4_random())
+            guesses.add(pickrandom.get_4_random());
         }
-
-
-        System.out.println(ANSI_RED + PEG);
-        System.out.println(ANSI_GREEN + PEG + ANSI_RESET);
-        System.out.println("Ja, mert kell a reset" + "Ugye");
-
-
-
+        int lineIndex = 1;
+        for ( ArrayList<Character> guess: guesses) {
+            System.out.print(lineIndex + ":   ");
+            lineIndex++;
+            for (Character color: guess) {
+                System.out.print(colorMap.get(color) + "  " + PEG);
+            }
+            System.out.println(colorMap.get('r') + "\n");
+        }
     }
 }
