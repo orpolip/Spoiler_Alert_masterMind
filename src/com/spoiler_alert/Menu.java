@@ -3,20 +3,28 @@ package com.spoiler_alert;
 import java.util.Scanner;
 
 public class Menu {
-    public static String opponent_chooser() {
-        System.out.println("Choose your opponent (C - for computer, P - for another player):");
-        String opponent = "";
-        while (opponent == "") {
+    public static int opponent_chooser() {
+        System.out.println("Welcome to Mastermind! \n");
+        System.out.println("MENU");
+        System.out.println("1. Play against computer");
+        System.out.println("2. Play against another player");
+        System.out.println("3. Exit");
+        System.out.println("Make your choice: ");
+        int choice = 0;
+        while (choice == 0) {
             Scanner scan = new Scanner(System.in);
-            opponent = scan.nextLine();
-            opponent = opponent.toUpperCase();
-            if (!opponent.equals("C") && (!opponent.equals("P"))) {
-                opponent = "";
-                System.out.println("Type  \"C\" or \"P\" to choose a game mode!");
-            } else if (opponent.equals("C") || opponent.equals("P")) {
+            choice = scan.nextInt();
+            if (choice != 1 && choice != 2 && choice != 3) {
+                choice = 0;
+                System.out.println("Type  the corresponding number from the above menu!");
+            } else if (choice == 3){
+                System.out.println("Exiting..");
+                System.exit(0);
+            }
+            else if (choice == 1 || choice == 2) {
                 break;
             }
         }
-        return opponent;
+        return choice;
     }
 }
