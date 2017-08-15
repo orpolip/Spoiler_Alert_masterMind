@@ -3,7 +3,7 @@ package com.spoiler_alert;
 import java.util.Scanner;
 
 public class Menu {
-    public static int opponent_chooser() {
+    public static int menu() {
         System.out.println("Welcome to Mastermind! \n");
         System.out.println("MENU");
         System.out.println("1. Play against computer");
