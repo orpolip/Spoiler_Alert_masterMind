@@ -19,6 +19,8 @@ public class Display {
         for (int i = 0; i < 4 ; i++) {
             guesses.add(pickrandom.get_4_random())
         }
+
+
         System.out.println(ANSI_RED + PEG);
         System.out.println(ANSI_GREEN + PEG + ANSI_RESET);
         System.out.println("Ja, mert kell a reset" + "Ugye");

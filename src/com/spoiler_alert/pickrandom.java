@@ -7,25 +7,27 @@ import java.util.ArrayList;
 
 public class pickrandom {
 
-    public static List get_4_random() {
+    public static ArrayList get_4_random() {
         Random rand = new Random();
-        ArrayList<String> givenList = new ArrayList<String>();
-        ArrayList<String> hideList = new ArrayList<String>();
+        ArrayList<Character> givenList = new ArrayList<>();
+        ArrayList<Character> hideList = new ArrayList<>();
 
-        givenList.add("A");
-        givenList.add("C");
-        givenList.add("B");
-        givenList.add("K");
-        givenList.add("G");
-        givenList.add("F");
+        givenList.add('R');
+        givenList.add('G');
+        givenList.add('B');
+        givenList.add('C');
+        givenList.add('P');
+        givenList.add('Y');
 
         int numberOfElements = 4;
 
+
         for (int i = 0; i < numberOfElements; i++) {
             int randomIndex = rand.nextInt(givenList.size());
-            String randomElement = givenList.get(randomIndex);
+            char randomElement = givenList.get(randomIndex);
             hideList.add(randomElement);
         }
         return hideList;
     }
 }
+
