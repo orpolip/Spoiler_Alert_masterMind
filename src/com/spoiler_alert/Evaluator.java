@@ -9,8 +9,7 @@ public class Evaluator {
         for (int i = 0; i < guess.size(); i++) {
             if (solution.get(i) == guess.get(i)) {
                 eval += "B";
-            }
-            else {
+            } else {
                 int indexInSolution = solution.indexOf(guess.get(i));
                 if (indexInSolution != -1) {
                     eval += "W";
@@ -19,6 +18,7 @@ public class Evaluator {
             }
         }
 
-        if (eval != "") { return eval; } else { return "-"; }
+        while (eval.length() < 4) { eval += "-"; }
+        return eval;
     }
 }
