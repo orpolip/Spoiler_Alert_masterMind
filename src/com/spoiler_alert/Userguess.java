@@ -16,6 +16,7 @@ public class Userguess {
         for (int i = 0; i < guess.length(); i++){
             char c = guess.charAt(i);
             String guesschar = String.valueOf(c);
+            guesschar.toUpperCase();
             guess_array.add(guesschar);
         }
         return guess_array;
