@@ -11,13 +11,11 @@ public class Userguess {
         return guess;
     }
 
-    public static ArrayList<String> input_to_array(String guess){
-        ArrayList<String> guess_array = new ArrayList<String>();
+    public static ArrayList<Character> input_to_array(String guess){
+        ArrayList<Character> guess_array = new ArrayList<>();
         for (int i = 0; i < guess.length(); i++){
             char c = guess.charAt(i);
-            String guesschar = String.valueOf(c);
-            guesschar.toUpperCase();
-            guess_array.add(guesschar);
+            guess_array.add(Character.toUpperCase(c));
         }
         return guess_array;
     }
