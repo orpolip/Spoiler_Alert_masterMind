@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Userguess {
-    public static String get_user_input(){
-        System.out.print("Enter your guess: ");
+    public static String get_user_input(String info){
+        System.out.print(info);
         Scanner scan = new Scanner(System.in);
         String guess = scan.nextLine();
         return guess;

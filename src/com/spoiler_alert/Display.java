@@ -37,7 +37,7 @@ public class Display {
     /***********************
      * only for test cases *
      **********************/
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         ArrayList<ArrayList<Character>> guesses = new ArrayList<>();
         for (int i = 0; i < 4 ; i++) {
@@ -49,6 +49,6 @@ public class Display {
 
         displayGuesses(guesses, solution);
 
-    }
+    }*/
 }
 

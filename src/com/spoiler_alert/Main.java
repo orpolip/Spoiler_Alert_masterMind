@@ -2,7 +2,6 @@ package com.spoiler_alert;
 
 import java.util.ArrayList;
 
-
 public class Main {
 
     static final String VICTORY = "BBBB";
@@ -13,19 +12,24 @@ public class Main {
         ArrayList<Character> outcome = new ArrayList<>();
         ArrayList<ArrayList<Character>> guesses = new ArrayList<>();
 
+        String userGuess = "Enter your guess: ";
+        String userCode = "Enter your code: ";
+        String result;
         int menuChoice = Menu.menu();
         if (menuChoice == 1) { // 1. : play with computer
             outcome = pickrandom.get_4_random();
         }
         else if (menuChoice == 2) { // 2. : play with human
-            outcome = pickrandom.get_4_random();  // TODO: get user input for the outcome
+            String code = Userguess.get_user_input(userCode);
+            ArrayList codeArray = Userguess.input_to_array(code);
+            outcome = codeArray;
+            // TODO: get user input for the outcome
         }
         System.out.println("The outcome of the game is: " + outcome);
 
-        String result;
         int turnCount = 0;
         do {
-            String guess = Userguess.get_user_input();
+            String guess = Userguess.get_user_input(userGuess);
             ArrayList guessArray = Userguess.input_to_array(guess);
             guesses.add(guessArray);
             result = Evaluator.evaluateGuess(guessArray, outcome);
