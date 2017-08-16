@@ -21,6 +21,11 @@ public class Display {
         System.out.print("\033[H\033[2J"); // clear screen + cursor home
         System.out.flush();
 
+        System.out.println("Possible color options: red, green, yellow, blue, purple, cyan");
+        System.out.println("For example: rrbc or RrBc or red red blue cyan");
+        System.out.println("But don't even think to try theese ones:");
+        System.out.println("GGG or bbbbb or xXxX or greenish red pink black\n");
+
         int lineIndex = 1;
         for ( ArrayList<Character> guess: guesses) {
             System.out.print(lineIndex + ":   ");
