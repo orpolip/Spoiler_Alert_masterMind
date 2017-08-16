@@ -5,9 +5,18 @@ import java.util.Scanner;
 
 public class Userguess {
     public static String get_user_input(){
-        System.out.print("Enter your guess: ");
-        Scanner scan = new Scanner(System.in);
-        String guess = scan.nextLine();
+        String guess = "";
+        while (guess == "") {
+            System.out.print("Enter your guess: ");
+            Scanner scan = new Scanner(System.in);
+            guess = scan.nextLine();
+            if (guess.length() != 4) {
+                guess = "";
+                System.out.println("The code contains 4 keys. Input exactly 4 keys!");
+            } else if (guess.length() == 4) {
+                break;
+            }
+        }
         return guess;
     }
 
