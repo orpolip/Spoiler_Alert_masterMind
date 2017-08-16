@@ -18,15 +18,19 @@ public class Display {
 
         final String PEG = "\u25CF";
 
+        System.out.print("\033[H\033[2J"); // clear screen + cursor home
+        System.out.flush();
+
         int lineIndex = 1;
         for ( ArrayList<Character> guess: guesses) {
             System.out.print(lineIndex + ":   ");
             lineIndex++;
             for (Character color: guess) {
-                System.out.print(colorMap.get(color) + "  " + PEG);
+                 System.out.print(colorMap.get(color) + "  " + PEG);
             }
             System.out.println(colorMap.get('r') + "    "+ Evaluator.evaluateGuess(guess, solution) +"\n");
         }
+
     }
 
 
@@ -40,7 +44,8 @@ public class Display {
             guesses.add(pickrandom.get_4_random());
         }
 
-        ArrayList<Character> solution = pickrandom.get_4_random();
+        ArrayList<Character> solution = new ArrayList<Character>();
+        solution = pickrandom.get_4_random();
 
         displayGuesses(guesses, solution);
 
