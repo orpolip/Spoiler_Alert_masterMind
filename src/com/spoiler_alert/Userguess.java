@@ -1,22 +1,43 @@
 package com.spoiler_alert;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Userguess {
-    public static String get_user_input(){
+    public static String get_user_input(String info){
         String guess = "";
+        //String [] colors = {"R","G","B","C","P","Y"};
+        ArrayList<Character> colors = new ArrayList<Character>();
+        ArrayList<Character> guessArray = new ArrayList<Character>();
+        colors.add('R');
+        colors.add('G');
+        colors.add('B');
+        colors.add('C');
+        colors.add('P');
+        colors.add('Y');
+
         while (guess == "") {
-            System.out.print("Enter your guess: ");
+            System.out.print(info);;
             Scanner scan = new Scanner(System.in);
             guess = scan.nextLine();
+            for (int i = 0; i < guess.length(); i++) {
+                char c = guess.charAt(i);
+                guessArray.add(Character.toUpperCase(c));
+            }
             if (guess.length() != 4) {
                 guess = "";
                 System.out.println("The code contains 4 keys. Input exactly 4 keys!");
             } else if (guess.length() == 4) {
-                break;
+                    if (colors.containsAll(guessArray)) {
+                        break;
+                    } else {
+                        System.out.println("Color not available. Choose from the above list.");
+                        get_user_input("Enter your guess: ");
+                    }
+                }
             }
-        }
+        System.out.println("Succes");
         return guess;
     }
 
