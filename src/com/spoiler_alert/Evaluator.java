@@ -16,20 +16,24 @@ public class Evaluator {
         ArrayList<Character> solutionClone = new ArrayList<>(solutionReference); // Clone it so the original stays intact
         String eval = "";
 
-        for (int i = 0; i < guess.size(); i++) {
-            if (guess.get(i) == solutionClone.get(i)) { // if items @ i index match, it's a black (full hit)
+        for (int i = 0; i < guess.size(); i++) {  // Find all the full hits first
+            if (guess.get(i) == solutionClone.get(i)) {
                 eval += "B";
-            }
-            else {
-                int indexInSolution = solutionClone.indexOf(guess.get(i));
-                if (indexInSolution != -1) { // if it's not a black, but it's in the solution elsewhere, it's a white
-                    eval += "W";
-                    solutionClone.set(indexInSolution, null); // to get it out of the way on later iterations
-                }
+                solutionClone.set(i, null); // to get it out of the way on later iterations
             }
         }
 
-        while (eval.length() < 4) { eval += "-"; }
+        for (int i = 0; i < guess.size(); i++) { // Then the partial hits
+            char currentGuess = guess.get(i);
+            int indexInSolution = solutionClone.indexOf(currentGuess);
+
+            if (indexInSolution != -1) {  // If it's contained in the solution elsewhere, it's a partial hit
+                eval += "W";
+                solutionClone.set(indexInSolution, null);
+            }
+        }
+
+        while (eval.length() < 4) { eval += "-"; } // Fill up the rest with -'s
         return eval;
     }
 }
