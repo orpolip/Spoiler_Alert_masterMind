@@ -2,9 +2,9 @@ package com.spoiler_alert;
 
 import java.util.ArrayList;
 
-public class Evaluator {
+ class Evaluator {
 
-    public static String evaluateGuess(ArrayList<Character> guessReference, ArrayList<Character> solutionReference) {
+    static String evaluateGuess(ArrayList<Character> guessReference, ArrayList<Character> solutionReference) {
         /*
         Compares a list of guesses to the solution and returns an evaluation.
         Black 'peg' for full hits (right color right place),
@@ -15,11 +15,11 @@ public class Evaluator {
         */
         ArrayList<Character> guessClone = new ArrayList<>(guessReference);
         ArrayList<Character> solutionClone = new ArrayList<>(solutionReference); // Clone them so the originals stay intact
-        String eval = "";
+        StringBuilder eval = new StringBuilder();
 
         for (int i = 0; i < guessReference.size(); i++) {  // Find all the full hits first
             if (guessClone.get(i) == solutionClone.get(i)) {
-                eval += "B";
+                eval.append("B");
                 guessClone.set(i, null);
                 solutionClone.set(i, null); // to get them out of the way on later iterations
             }
@@ -33,13 +33,13 @@ public class Evaluator {
                 int indexInSolution = solutionClone.indexOf(currentGuess);
 
                 if (indexInSolution != -1) {  // If it's contained in the solution elsewhere, it's a partial hit
-                    eval += "W";
+                    eval.append("W");
                     solutionClone.set(indexInSolution, null);
                 }
             }
         }
 
-        while (eval.length() < 4) { eval += "-"; } // Fill up the rest with -'s
-        return eval;
+        while (eval.length() < 4) { eval.append('-'); } // Fill up the rest with -'s
+        return eval.toString();
     }
 }
