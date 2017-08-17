@@ -19,16 +19,22 @@ public class Userguess {
         
         while (guess == "") {
             String wrongColor = "";
+            System.out.println("Available colors: red, green, yellow, blue, purple, cyan");
             System.out.print(info);
 
-            if (info == "Enter your code: ") {
+            Scanner scan = new Scanner(System.in);
+            guess = scan.nextLine();
+
+            //comment in IDE
+            /*if (info == "Enter your code: ") {
                 Console cns = System.console();
                 guess = new String(cns.readPassword());
             }
             else {
                 Scanner scan = new Scanner(System.in);
                 guess = scan.nextLine();
-            }
+            }*/
+
 
             for (int i = 0; i < guess.length(); i++) {
                 char c = guess.charAt(i);

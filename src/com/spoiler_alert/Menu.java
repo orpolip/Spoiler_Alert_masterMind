@@ -1,6 +1,5 @@
 package com.spoiler_alert;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class Menu {
@@ -20,13 +19,18 @@ public class Menu {
                 case 1 : break;
                 case 2 : break;
                 case 3 : break;
-                case 4 : System.out.println("Pick four of the available colors : red, green, yellow, blue, purple, cyan");
-                        System.out.println("You must type only the first letter of a color, don't worry they are not case sensitive ");
-                        System.out.println("But don't even think to make some tricky typo like:");
-                        System.out.println("GGG or bbbbb or xXxX or greenish red pink black, etc.\n");
-                        break;
+                case 4 :  System.out.println("Instructions:");
+                          System.out.println("Try to find out a code containing 4 colors.");
+                          System.out.println("One color can occur multiple times in a code.");
+                          System.out.println("Pick 4 of the available colors : red, green, yellow, blue, purple, cyan.");
+                          System.out.println("You get a feedback after each guess.");
+                          System.out.println("'B' means you got a color in the right place in the code.");
+                          System.out.println("'W' means that a color is right, but it is in the wrong place.");
+                          System.out.println("Type only the first letter of a color.");
+                          break;
                 default: choice = -1;
                         System.out.println("Type  the corresponding number from the above menu!");
+
             }
          }
         return choice;
