@@ -10,10 +10,14 @@ public class Menu {
         System.out.println("2. Play against another player");
         System.out.println("3. Exit");
         System.out.println("Make your choice: ");
+
         int choice = 0;
         while (choice == 0) {
             Scanner scan = new Scanner(System.in);
-            choice = scan.nextInt();
+            if (scan.hasNextInt()) {
+                choice = scan.nextInt();
+            }
+
             if (choice != 1 && choice != 2 && choice != 3) {
                 choice = 0;
                 System.out.println("Type  the corresponding number from the above menu!");
