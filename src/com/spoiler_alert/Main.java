@@ -14,7 +14,7 @@ public class Main {
         ArrayList<ArrayList<Character>> guesses = new ArrayList<>();
 
         String userGuess = "Enter your guess: ";
-        String userCode = "Enter your code: ";
+        String userCode = "Enter your color pattern: ";
         String result;
         Menu.showMenu();
         while (true) {
@@ -27,7 +27,12 @@ public class Main {
                 ArrayList codeArray = Userguess.input_to_array(code);
                 outcome = codeArray;
                 break;
-            } else if (menuChoice == 3) {
+            } else if (menuChoice == 3) { //3. computer plays
+                String code = Userguess.get_user_input(userCode);
+                ArrayList codeArray = Userguess.input_to_array(code);
+                AutoSolve.aiGuess(codeArray);
+                Menu.showMenu();
+            }else if (menuChoice == 4) {
                 continue;
 
             }
