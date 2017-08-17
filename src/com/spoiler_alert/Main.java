@@ -15,18 +15,25 @@ public class Main {
 
         String userGuess = "Enter your guess: ";
         String userCode = "Enter your code: ";
-        int menuChoice = Menu.menu();
-        if (menuChoice == 1) { // 1. : play with computer
-            outcome = pickrandom.get_4_random();
-        }
-        else if (menuChoice == 2) { // 2. : play with human
-            String code = Userguess.get_user_input(userCode);
-            ArrayList codeArray = Userguess.input_to_array(code);
-            outcome = codeArray;
-        }
-        //System.out.println("The outcome of the game is: " + outcome);
-
         String result;
+        Menu.showMenu();
+        while (true) {
+            int menuChoice = Menu.menu();
+            if (menuChoice == 1) { // 1. : play with computer
+                outcome = pickrandom.get_4_random();
+                break;
+            } else if (menuChoice == 2) { // 2. : play with human
+                String code = Userguess.get_user_input(userCode);
+                ArrayList codeArray = Userguess.input_to_array(code);
+                outcome = codeArray;
+                break;
+            } else if (menuChoice == 3) {
+                continue;
+
+            }
+        }
+
+
         int turnCount = 0;
         do {
             String guess = Userguess.get_user_input(userGuess);
