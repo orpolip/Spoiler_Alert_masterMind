@@ -1,13 +1,11 @@
 package com.spoiler_alert;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class Userguess {
     public static String get_user_input(String info){
         String guess = "";
-        //String [] colors = {"R","G","B","C","P","Y"};
         ArrayList<Character> colors = new ArrayList<Character>();
         ArrayList<Character> guessArray = new ArrayList<Character>();
         colors.add('R');
@@ -33,11 +31,10 @@ public class Userguess {
                         break;
                     } else {
                         System.out.println("Color not available. Choose from the above list.");
-                        get_user_input("Enter your guess: ");
+                        guess = get_user_input("Enter your guess: ");
                     }
                 }
             }
-        System.out.println("Succes");
         return guess;
     }
 
