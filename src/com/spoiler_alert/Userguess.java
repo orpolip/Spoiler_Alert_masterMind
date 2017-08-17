@@ -8,6 +8,7 @@ public class Userguess {
         String guess = "";
         ArrayList<Character> colors = new ArrayList<Character>();
         ArrayList<Character> guessArray = new ArrayList<Character>();
+
         colors.add('R');
         colors.add('G');
         colors.add('B');
@@ -16,7 +17,9 @@ public class Userguess {
         colors.add('Y');
 
         while (guess == "") {
-            System.out.print(info);;
+            String wrongColor = "";
+            System.out.print(info);
+            ;
             Scanner scan = new Scanner(System.in);
             guess = scan.nextLine();
             for (int i = 0; i < guess.length(); i++) {
@@ -24,17 +27,27 @@ public class Userguess {
                 guessArray.add(Character.toUpperCase(c));
             }
             if (guess.length() != 4) {
+                guessArray.clear();
                 guess = "";
                 System.out.println("The code contains 4 keys. Input exactly 4 keys!");
             } else if (guess.length() == 4) {
-                    if (colors.containsAll(guessArray)) {
-                        break;
-                    } else {
-                        System.out.println("Color not available. Choose from the above list.");
-                        guess = get_user_input("Enter your guess: ");
+                wrongColor = "";
+                if (colors.containsAll(guessArray)) {
+                    break;
+                } else {
+                    for (int i = 0; i < guessArray.size(); i++) {
+                        if (!colors.contains(guessArray.get(i))) {
+                            wrongColor += guessArray.get(i).toString();
+                            if (wrongColor.length() >= 1){
+                                wrongColor += " ";
+                            }
+                        }
                     }
+                    System.out.println("Invalid colors: " + wrongColor);
+                    guess = get_user_input(info);
                 }
             }
+        }
         return guess;
     }
 
