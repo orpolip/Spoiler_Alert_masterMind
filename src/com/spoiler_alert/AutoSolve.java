@@ -3,13 +3,13 @@ package com.spoiler_alert;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.HashMap;
-import java.util.stream.Collectors;
+import java.util.Random;
 
 public class AutoSolve {
 
     public static void aiGuess(ArrayList<Character> solution) {
 
-        HashSet<ArrayList<Character>> solutionsSet = new HashSet<>();
+        HashSet<ArrayList<Character>> solutionsSet;
         solutionsSet = generateFullSet();
 
         ArrayList<ArrayList<Character>> listOfGuesses = new ArrayList<>();
@@ -20,7 +20,6 @@ public class AutoSolve {
             add('B');
         }};
         listOfGuesses.add(firstGuess);
-        System.out.println(listOfGuesses);
 
         String answer = "";
         do {
@@ -36,19 +35,17 @@ public class AutoSolve {
                     }
                 }
                 solutionsSet.removeAll(wrongPatterns);
-
-                System.out.println(wrongPatterns);
-                System.out.println(solutionsSet);
-
+                listOfGuesses.add(nextGuess(solutionsSet));
             }
-
-        } while (false ); //answer == "BBBB");
-
-
-
+        } while (!answer.equals("BBBB"));
     }
 
     public static HashSet<ArrayList<Character>> generateFullSet() {
+        /*
+        It generates all possibele variatioons of peg patterns.
+        Returns them in a HashSet<ArrayList<Characters>> format,
+        where characters could be upper case 'R' 'G' 'B' 'Y' 'C' 'P'
+         */
         HashMap<Integer,Character> charMap = new HashMap<>();
         charMap.put(0, 'R');
         charMap.put(1, 'G');
@@ -73,12 +70,31 @@ public class AutoSolve {
         return fullSet;
     }
 
+    public static ArrayList<Character> nextGuess(HashSet<ArrayList<Character>> solutionsList) {
+        /*
+        Picks a random element of all possible solutions, for the next guess.
+        Input: HashSet<ArrayList<Character>> e.g. [[C, G, P, Y], [G, G, C, P], [C, G, P, G]]
+        Return: ArrayList<Character> e.g.[C, G, P, Y]
+         */
+        Random rnd = new Random();
+        int randomIndex = rnd.nextInt(solutionsList.size());
+        int i = 0;
+        for (ArrayList<Character>element:solutionsList) {
+            if (i==randomIndex) {
+                return element;
+            } else{
+                i++;
+            }
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         ArrayList<Character> tempSolution = new ArrayList<>();
-        tempSolution.add('R');
-        tempSolution.add('R');
-        tempSolution.add('B');
         tempSolution.add('C');
+        tempSolution.add('P');
+        tempSolution.add('C');
+        tempSolution.add('G');
 
         aiGuess(tempSolution);
     }
