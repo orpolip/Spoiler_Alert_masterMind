@@ -18,8 +18,8 @@ public class Userguess {
 
         while (guess == "") {
             String wrongColor = "";
+            System.out.println("Available colors: red, green, yellow, blue, purple, cyan");
             System.out.print(info);
-            ;
             Scanner scan = new Scanner(System.in);
             guess = scan.nextLine();
             for (int i = 0; i < guess.length(); i++) {
