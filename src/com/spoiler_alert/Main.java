@@ -49,5 +49,6 @@ public class Main {
         else {  // Won the game
             System.out.println("Congratulations, you are a true MasterMind!");
         }
+        System.out.println("The outcome of the game is: " + outcome);
     }
 }
