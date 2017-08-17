@@ -11,7 +11,7 @@ public class Menu {
         while (choice == 0) {
             Scanner scan = new Scanner(System.in);
             if(scan.hasNextInt()){choice = scan.nextInt();}
-            if (choice != 1 && choice != 2 && choice != 3) {
+            if (choice != 1 && choice != 2 && choice != 3 && choice != 4) {
                 choice = 0;
                 System.out.println("Type  the corresponding number from the above menu!");
             } else if (choice == 4){
