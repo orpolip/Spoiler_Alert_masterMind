@@ -2,6 +2,7 @@ package com.spoiler_alert;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.Console;
 
 public class Userguess {
     public static String get_user_input(String info){
@@ -15,13 +16,26 @@ public class Userguess {
         colors.add('C');
         colors.add('P');
         colors.add('Y');
-
+        
         while (guess == "") {
             String wrongColor = "";
             System.out.println("Available colors: red, green, yellow, blue, purple, cyan");
             System.out.print(info);
+
             Scanner scan = new Scanner(System.in);
             guess = scan.nextLine();
+
+            //comment in IDE
+            /*if (info == "Enter your code: ") {
+                Console cns = System.console();
+                guess = new String(cns.readPassword());
+            }
+            else {
+                Scanner scan = new Scanner(System.in);
+                guess = scan.nextLine();
+            }*/
+
+
             for (int i = 0; i < guess.length(); i++) {
                 char c = guess.charAt(i);
                 guessArray.add(Character.toUpperCase(c));
