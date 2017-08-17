@@ -21,7 +21,7 @@ public class AutoSolve {
         }};
         listOfGuesses.add(firstGuess);
 
-        String answer = "";
+        String answer;
         do {
             answer = Evaluator.evaluateGuess(listOfGuesses.get(listOfGuesses.size()-1), solution);
             Display.displayGuesses(listOfGuesses,solution);
@@ -87,16 +87,6 @@ public class AutoSolve {
             }
         }
         return null;
-    }
-
-    public static void main(String[] args) {
-        ArrayList<Character> tempSolution = new ArrayList<>();
-        tempSolution.add('C');
-        tempSolution.add('P');
-        tempSolution.add('C');
-        tempSolution.add('G');
-
-        aiGuess(tempSolution);
     }
 }
 

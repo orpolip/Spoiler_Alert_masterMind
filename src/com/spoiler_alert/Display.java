@@ -33,23 +33,5 @@ public class Display {
         }
 
     }
-
-
-    /***********************
-     * only for test cases *
-     **********************/
-    /*public static void main(String[] args) {
-
-        ArrayList<ArrayList<Character>> guesses = new ArrayList<>();
-        for (int i = 0; i < 4 ; i++) {
-            guesses.add(pickrandom.get_4_random());
-        }
-
-        ArrayList<Character> solution = new ArrayList<Character>();
-        solution = pickrandom.get_4_random();
-
-        displayGuesses(guesses, solution);
-
-    }*/
 }
 

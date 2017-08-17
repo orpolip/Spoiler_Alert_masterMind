@@ -2,8 +2,8 @@ package com.spoiler_alert;
 
 import java.util.Scanner;
 
-public class Menu {
-    public static int menu() {
+    class Menu {
+     static int menu() {
 
 
         System.out.println("Make your choice: ");

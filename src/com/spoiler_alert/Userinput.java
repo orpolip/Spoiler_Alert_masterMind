@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.Console;
 
-public class Userguess {
-    public static String get_user_input(String info){
+public class Userinput {
+    public static String getUserInput(String info){
         String guess = "";
-        ArrayList<Character> colors = new ArrayList<Character>();
-        ArrayList<Character> guessArray = new ArrayList<Character>();
+        ArrayList<Character> colors = new ArrayList<>();
+        ArrayList<Character> guessArray = new ArrayList<>();
 
         colors.add('R');
         colors.add('G');
@@ -36,10 +36,7 @@ public class Userguess {
             }*/
 
 
-            for (int i = 0; i < guess.length(); i++) {
-                char c = guess.charAt(i);
-                guessArray.add(Character.toUpperCase(c));
-            }
+            guessArray = inputToArray(guess);
             if (guess.length() != 4) {
                 guessArray.clear();
                 guess = "";
@@ -58,14 +55,14 @@ public class Userguess {
                         }
                     }
                     System.out.println("Invalid colors: " + wrongColor);
-                    guess = get_user_input(info);
+                    guess = getUserInput(info);
                 }
             }
         }
         return guess;
     }
 
-    public static ArrayList<Character> input_to_array(String guess){
+    public static ArrayList<Character> inputToArray(String guess){
         ArrayList<Character> guess_array = new ArrayList<>();
         for (int i = 0; i < guess.length(); i++){
             char c = guess.charAt(i);
