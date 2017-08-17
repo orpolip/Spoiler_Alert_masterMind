@@ -1,16 +1,51 @@
 package com.spoiler_alert;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
-
+import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class AutoSolve {
 
     public static void aiGuess(ArrayList<Character> solution) {
+
         HashSet<ArrayList<Character>> solutionsSet = new HashSet<>();
         solutionsSet = generateFullSet();
-        System.out.println(solutionsSet);
+
+        ArrayList<ArrayList<Character>> listOfGuesses = new ArrayList<>();
+        ArrayList<Character> firstGuess = new ArrayList<Character>() {{
+            add('R');
+            add('R');
+            add('B');
+            add('B');
+        }};
+        listOfGuesses.add(firstGuess);
+        System.out.println(listOfGuesses);
+
+        String answer = "";
+        do {
+            answer = Evaluator.evaluateGuess(listOfGuesses.get(listOfGuesses.size()-1), solution);
+            Display.displayGuesses(listOfGuesses,solution);
+
+            if (!answer.equals("BBBB")) {
+                HashSet<ArrayList<Character>> wrongPatterns = new HashSet<>();
+
+                for (ArrayList<Character> element: solutionsSet) {
+                    if (!answer.equals(Evaluator.evaluateGuess(listOfGuesses.get(listOfGuesses.size()-1), element)) ) {
+                        wrongPatterns.add(element);
+                    }
+                }
+                solutionsSet.removeAll(wrongPatterns);
+
+                System.out.println(wrongPatterns);
+                System.out.println(solutionsSet);
+
+            }
+
+        } while (false ); //answer == "BBBB");
+
+
+
     }
 
     public static HashSet<ArrayList<Character>> generateFullSet() {
@@ -43,7 +78,7 @@ public class AutoSolve {
         tempSolution.add('R');
         tempSolution.add('R');
         tempSolution.add('B');
-        tempSolution.add('B');
+        tempSolution.add('C');
 
         aiGuess(tempSolution);
     }
